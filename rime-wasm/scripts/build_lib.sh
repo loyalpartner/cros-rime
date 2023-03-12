@@ -23,6 +23,7 @@ emcmake cmake librime/deps/yaml-cpp -B build/yaml-cpp \
 	-DYAML_CPP_BUILD_TESTS:BOOL=OFF \
 	-DYAML_CPP_BUILD_TOOLS:BOOL=OFF \
   -DCMAKE_BUILD_TYPE:STRING="Release" \
+  -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -pthread" \
   -DCMAKE_INSTALL_PREFIX:PATH=/usr/local
 make DESTDIR=$root/build/sysroot -C build/yaml-cpp install -j $n
 
@@ -31,11 +32,13 @@ emcmake cmake librime/deps/leveldb -B build/leveldb \
   -DLEVELDB_BUILD_BENCHMARKS:BOOL=OFF \
   -DLEVELDB_BUILD_TESTS:BOOL=OFF \
   -DCMAKE_BUILD_TYPE:STRING="Release" \
+  -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -pthread" \
   -DCMAKE_INSTALL_PREFIX:PATH=/usr/local
 make DESTDIR=$root/build/sysroot -C build/leveldb install -j $n
 
 emcmake cmake librime/deps -B build/marisa-trie \
   -DCMAKE_BUILD_TYPE:STRING="Release" \
+  -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -pthread" \
 	-DCMAKE_INSTALL_PREFIX:PATH=/usr/local
 make DESTDIR=$root/build/sysroot -C build/marisa-trie install -j $n
 
@@ -47,6 +50,7 @@ popd
 emcmake cmake librime/deps/opencc -B build/opencc_wasm \
   -DBUILD_SHARED_LIBS:BOOL=OFF \
   -DCMAKE_BUILD_TYPE:STRING="Release" \
+  -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -pthread" \
   -DCMAKE_INSTALL_PREFIX:PATH=/usr/local
 make DESTDIR=$root/build/sysroot -C build/opencc_wasm install -j $n
 
@@ -60,6 +64,7 @@ if [[ $ENABLE_LOGGING == 'ON' ]]; then
     -DWITH_GFLAGS:BOOL=OFF \
     -DWITH_UNWIND:BOOL=OFF \
     -DCMAKE_BUILD_TYPE:STRING="Release" \
+    -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -pthread" \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr/local
   make DESTDIR=$root/build/sysroot -C build/glog install -j $n
 fi
@@ -71,5 +76,6 @@ emcmake cmake librime -B build/librime_wasm \
   -DBUILD_TEST:BOOL=OFF \
   -DENABLE_LOGGING:BOOL=$ENABLE_LOGGING \
   -DCMAKE_BUILD_TYPE:STRING="Release" \
+  -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -pthread" \
   -DCMAKE_INSTALL_PREFIX:PATH=/usr/local
 make DESTDIR=$root/build/sysroot -C build/librime_wasm install -j $n
