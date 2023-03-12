@@ -1,0 +1,6 @@
+[submodule "rime-wasm/boost"]
+	path = rime-wasm/boost
+	url = https://github.com/boostorg/boost.git
+[submodule "rime-wasm/librime"]
+	path = rime-wasm/librime
+	url = https://github.com/rime/librime
