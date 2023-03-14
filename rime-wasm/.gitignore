@@ -1,5 +1,8 @@
 boost/
 librime/
+node_modules/
 build/
 .cache
+yarn.lock
+package-lock.json
 compile_commands.json

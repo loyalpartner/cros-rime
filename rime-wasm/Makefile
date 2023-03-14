@@ -1,4 +1,4 @@
-.PHONY: submodule lib rime_api_wasm
+.PHONY: submodule lib wasm
 
 submodule:
 	git submodule update --init --recursive
@@ -6,10 +6,8 @@ submodule:
 lib:
 	scripts/build_lib.sh
 
-rime_api_wasm:
-	emcmake cmake . -Bbuild/rime_api_wasm \
-		-DCMAKE_FIND_ROOT_PATH:PATH=build/sysroot/usr/local
-	cmake --build build/rime_api_wasm
+wasm:
+	scripts/build_wasm.sh
 
 clean:
 	rm -rf build/rime_api_wasm
