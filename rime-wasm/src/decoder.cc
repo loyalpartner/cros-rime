@@ -104,6 +104,9 @@ class Decoder {
           size_t end = context_->composition.sel_end;
           size_t cursor = context_->composition.cursor_pos;
 
+          // TODO: we just set zero, chromeos can show the right candidate
+          start = end = 0;
+
           EM_ASM({
             imeHandler.setComposition({
               preedit: UTF8ToString($0),
