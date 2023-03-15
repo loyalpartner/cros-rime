@@ -1,0 +1,26 @@
+{
+  "name": "Chrome OS中文输入法",
+  "version": "0.0.1",
+  "description": "Chrome OS Chinese Input Method",
+  "manifest_version": 2,
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+    "input",
+    "unlimitedStorage",
+    "storage"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "input_components": [
+    {
+      "name": "Cros Rime",
+      "type": "ime",
+      "id": "cros-rime",
+      "description": "Chrome OS Chinese Input Method.",
+      "language": "zh",
+      "layouts": ["dvorak", "us"]
+    }
+  ],
+  "options_page": "options.html"
+}

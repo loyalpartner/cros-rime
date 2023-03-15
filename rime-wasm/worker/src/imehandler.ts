@@ -22,8 +22,10 @@ export class IMEHandler implements IIMEHandler {
 
   initialize() {
     this.checkDecoder();
-    this.#decoder?.initialize(false);
-    this.inited = true;
+    if(this.#decoder) {
+      this.#decoder?.initialize(false);
+      this.inited = true;
+    }
   }
 
   set decoder(value: IDecoder | undefined) {
@@ -44,6 +46,9 @@ export class IMEHandler implements IIMEHandler {
     this.flushCache();
     this.hide();
     this.clearComposition();
+    if(!this.inited) {
+      this.initialize();
+    }
   }
 
   checkDecoder() {

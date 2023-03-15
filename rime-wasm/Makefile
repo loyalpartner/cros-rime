@@ -1,4 +1,4 @@
-.PHONY: submodule lib wasm
+.PHONY: submodule lib wasm clean cleanwasm
 
 submodule:
 	git submodule update --init --recursive
@@ -10,4 +10,7 @@ wasm:
 	scripts/build_wasm.sh
 
 clean:
+	rm -rf build
+
+cleanwasm:
 	rm -rf build/rime_api_wasm

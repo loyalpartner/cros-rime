@@ -2,7 +2,7 @@
 
 set -e
 
-: "${ENABLE_LOGGING:=OFF}"
+: "${ENABLE_LOGGING:=ON}"
 
 root=$PWD
 n=`nproc --all`

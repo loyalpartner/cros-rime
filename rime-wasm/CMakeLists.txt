@@ -25,6 +25,7 @@ target_link_libraries(
   leveldb
   marisa
   opencc
+  glog
   :libboost_filesystem.bc
   embind
   idbfs.js)
